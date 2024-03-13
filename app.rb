@@ -32,11 +32,7 @@ def game_outcome(player_choice)
   computer_choice = choices[rand(0..2)]
   if computer_choice == player_choice
     result = "tied"
-  elsif player_choice == "rock" && computer_choice == "paper"
-    result = "lost"
-  elsif player_choice == "paper" && computer_choice == "scissors"
-    result = "lost"
-  elsif player_choice == "scissors" && computer_choice == "rock"
+  elsif player_choice == "rock" && computer_choice == "paper" || player_choice == "paper" && computer_choice == "scissors" || player_choice == "scissors" && computer_choice == "rock"
     result = "lost"
   else
     result = "won"
