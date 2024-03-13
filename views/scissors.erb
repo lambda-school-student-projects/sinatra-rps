@@ -1,14 +1,14 @@
 <!-- /views/scissors.erb -->
  <h2>
-    We played scissors!
+    We played <%= @outcome[0] %>!
   </h2>
 
   <h2>
-    They played <%= @choice %>!
+    They played <%= @outcome[1] %>!
   </h2>
 
   <h2>
-    We <%= @outcome %>!
+    We <%= @outcome[2] %>!
   </h2>
 
   <a href="/">

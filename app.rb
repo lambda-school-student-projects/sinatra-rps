@@ -8,35 +8,38 @@ get("/") do
 end
 
 get("/rock") do
-  choices = ["rock", "paper", "scissors"]
-  @outcome = ""
-  @choice = choices[rand(0..2)]
-  if @choice == "rock"
-    @outcome = "tie"
-  end
+  @outcome = game_outcome("rock")
   erb(:rock)
 
 end
 
 get("/paper") do
-  choices = ["rock", "paper", "scissors"]
-  @outcome = ""
-  @choice = choices[rand(0..2)]
-  if @choice == "paper"
-    @outcome = "tie"
-  end
+  @outcome = game_outcome("paper")
   erb(:paper)
 
 end
 
 get("/scissors") do
-  choices = ["rock", "paper", "scissors"]
-  @outcome = ""
-  @choice == choices[rand(0..2)]
-  if @choice = "scissors"
-    @outcome = "tie"
-  end
-
+  @outcome = game_outcome("scissors")
   erb(:scissors)
+end
 
+private
+
+def game_outcome(player_choice)
+  choices = ["rock", "paper", "scissors"]
+  result = ""
+  computer_choice = choices[rand(0..2)]
+  if computer_choice == player_choice
+    result = "tied"
+  elsif player_choice == "rock" && computer_choice == "paper"
+    result = "lost"
+  elsif player_choice == "paper" && computer_choice == "scissors"
+    result = "lost"
+  elsif player_choice == "scissors" && computer_choice == "rock"
+    result = "lost"
+  else
+    result = "won"
+  end
+  [player_choice, computer_choice, result]
 end
